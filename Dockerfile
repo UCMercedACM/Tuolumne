@@ -4,22 +4,26 @@ RUN apt-get update -y
 RUN apt-get install -y openssl zip unzip git
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 RUN apt-get update -y
-RUN apt-get install -y \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libmcrypt-dev \
-    libpng-dev \
-    zlib1g-dev \
-    libxml2-dev \
-    libzip-dev \
-    libonig-dev \
-    graphviz \
-    && docker-php-ext-configure gd \
-    && docker-php-ext-install -j$(nproc) gd \
-    && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install mysqli \
-    && docker-php-ext-install zip \
-    && docker-php-source delete
+RUN apt-get install -y libfreetype6-dev
+RUN apt-get install -y libjpeg62-turbo-dev
+RUN apt-get install -y libmcrypt-dev
+RUN apt-get install -y libpng-dev
+RUN apt-get install -y zlib1g-dev
+RUN apt-get install -y libxml2-dev
+RUN apt-get install -y libzip-dev
+RUN apt-get install -y libonig-dev
+RUN apt-get install -y graphviz
+RUN docker-php-ext-configure gd
+RUN docker-php-ext-install -j$(nproc) gd
+RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install mysqli
+RUN docker-php-ext-install zip
+RUN docker-php-source delete
+
+# Install selected extensions and other stuff
+RUN apt-get update
+RUN apt-get -y --no-install-recommends install  php7.4-pgsql php7.4-gd \
+    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 WORKDIR /app
 
