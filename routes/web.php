@@ -22,7 +22,7 @@ Route::get('/workshops', function () {
 
     $workshops = DB::table('workshops')
 
-        ->select('workshops.workshop_name', 'workshops.description', 'workshops.time', 'workshops.date', 'workshops.*')
+        ->select('workshops.workshop_name', 'workshops.description', 'workshops.time', 'workshops.date')
 
         ->get();
 
