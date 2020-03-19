@@ -8,6 +8,7 @@ RUN apt-get install -y libfreetype6-dev
 RUN apt-get install -y libjpeg62-turbo-dev
 RUN apt-get install -y libmcrypt-dev
 RUN apt-get install -y libpng-dev
+RUN apt-get install -y libpq-dev
 RUN apt-get install -y zlib1g-dev
 RUN apt-get install -y libxml2-dev
 RUN apt-get install -y libzip-dev
@@ -16,14 +17,10 @@ RUN apt-get install -y graphviz
 RUN docker-php-ext-configure gd
 RUN docker-php-ext-install -j$(nproc) gd
 RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_pgsql
 RUN docker-php-ext-install mysqli
 RUN docker-php-ext-install zip
 RUN docker-php-source delete
-
-# Install selected extensions and other stuff
-RUN apt-get update
-RUN apt-get -y --no-install-recommends install  php7.4-pgsql php7.4-gd \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
 WORKDIR /app
 
