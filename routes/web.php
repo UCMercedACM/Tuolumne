@@ -14,5 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+
+    return view('welcome', ['users' => App\User::all()]);
+});
+
+Route::get('/workshops', function () {
+
+    $workshops = DB::table('workshops')
+
+        ->select('workshops.workshop_name', 'workshops.description', 'workshops.time', 'workshops.date', 'workshops.*')
+
+        ->get();
+
+    return view('workshops', ['workshops' => $workshops]);
 });
