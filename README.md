@@ -37,11 +37,18 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 
 ### Database Connection
 
-`php artisan migrate:install`
+Install of dependencies `php artisan migrate:install`
 
 ### Generate Tables
 
-`php artisan migrate:fresh`
+Create all tables in psql `php artisan migrate:fresh`
+
+### Make new tables
+
+1. `php artisan make:model -f -m TableName`
+2. Make a new Factory to autogenerate test data in `database/factories/TableNameFactory.php`
+3. Build the seeder `php artisan make:seeder CarsTableSeeder`
+4. Seed the database `php artisan migrate --seed`
 
 ## License
 
