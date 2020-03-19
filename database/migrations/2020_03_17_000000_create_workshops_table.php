@@ -14,7 +14,7 @@ class CreateWorkshopsTable extends Migration
     public function up()
     {
         Schema::create('workshops', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
             $table->string('workshop_name');
             $table->longText('description');
             $table->string('location');
