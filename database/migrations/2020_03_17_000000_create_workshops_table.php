@@ -27,7 +27,7 @@ class CreateWorkshopsTable extends Migration
             $table->binary('thumbnail')->nullable();
             $table->binary('flyer')->nullable();
             $table->boolean('active');
-            $table->timestamp('created_at');
+            $table->timestamps();
         });
     }
 

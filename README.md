@@ -43,6 +43,10 @@ Install of dependencies `php artisan migrate:install`
 
 Create all tables in psql `php artisan migrate:fresh`
 
+### Run App Locally
+
+Serve up the application with `php artisan serve`
+
 ### Make new tables
 
 1. `php artisan make:model -f -m TableName`

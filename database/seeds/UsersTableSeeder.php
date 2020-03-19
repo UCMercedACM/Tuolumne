@@ -2,15 +2,15 @@
 
 use Illuminate\Database\Seeder;
 
-class WorkshopTableSeeder extends Seeder
+class UsersTableSeeder extends Seeder
 {
     /**
-     * Run the workshop seeds.
+     * Run the user seeds.
      *
      * @return void
      */
     public function run()
     {
-        factory(App\Workshop::class, 10)->create();
+        factory(App\User::class, 10)->create();
     }
 }

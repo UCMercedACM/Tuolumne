@@ -19,18 +19,17 @@ use Illuminate\Support\Str;
 
 $factory->define(Workshop::class, function (Faker $faker) {
     return [
-        'email' => $faker->unique()->safeEmail,
         'workshop_name' => $faker->name,
         'description' => $faker->sentence,
         'location' => $faker->address,
-        'time' => $faker->dateTime,
+        'time' => $faker->time,
         'date' => $faker->date,
-        'github_repo' => $faker->url,
-        'google_slides' => $faker->url,
+        'github_repo' => $faker->unique()->url,
+        'google_slides' => $faker->unique()->url,
         'attendees' => $faker->name,
         'conducted_by' => $faker->name,
-        'thumbnail' => $faker->image,
-        'flyer' => $faker->image,
+        // 'thumbnail' => $faker->image,
+        // 'flyer' => $faker->image,
         'active' => $faker->boolean,
         'created_at' => now(),
     ];
