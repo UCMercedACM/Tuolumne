@@ -13,18 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get(
+    '/',
+    function () {
 
-    return view('welcome', ['users' => App\User::all()]);
-});
+        return view('welcome', ['users' => App\User::all()]);
+    }
+);
 
-Route::get('/workshops', function () {
+Route::get(
+    '/workshops',
+    function () {
 
-    $workshops = DB::table('workshops')
+        $workshops = DB::table('workshops')
 
-        ->select('workshops.workshop_name', 'workshops.description', 'workshops.time', 'workshops.date')
+            ->select('workshops.workshop_name', 'workshops.description', 'workshops.time', 'workshops.date')
 
-        ->get();
+            ->get();
 
-    return view('workshops', ['workshops' => $workshops]);
-});
+        return view('workshops', ['workshops' => $workshops]);
+    }
+);
