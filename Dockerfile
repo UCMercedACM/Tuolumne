@@ -1,5 +1,8 @@
 FROM php:7.4-cli
 
+LABEL maintainer="UCM ACM Chapter"
+LABEL maintainer.email="acm@ucmerced.edu"
+
 RUN apt-get update -y
 RUN apt-get install -y openssl zip unzip git
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -31,3 +34,6 @@ RUN composer install
 EXPOSE 4202
 
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=4202"]
+
+HEALTHCHECK --interval=5m --timeout=3s \
+    CMD curl -f http://localhost/ || exit 1
