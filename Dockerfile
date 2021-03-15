@@ -29,6 +29,8 @@ WORKDIR /app
 
 COPY . /app
 
+RUN composer self-update
+RUN composer update
 RUN composer install
 
 EXPOSE 4202
